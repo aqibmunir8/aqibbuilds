@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "AqibBuilds — We Build. We Automate. We Grow.",
   description:
     "Digital engineering & performance agency. High-converting websites, web apps, headless e-commerce, AI automations, and data-driven ad campaigns.",
+  icons: {
+    icon: "/aqibbuilds-icon-transparent.png",
+    shortcut: "/aqibbuilds-icon-transparent.png",
+    apple: "/aqibbuilds-icon-transparent.png",
+  },
 };
 
 export default function RootLayout({

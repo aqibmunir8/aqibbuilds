@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -49,10 +50,21 @@ export default function Navbar() {
         {/* Brand Logo */}
         <Link
           href="/"
-          className="text-xl md:text-2xl font-black tracking-tight text-[var(--text-color)] no-underline flex items-center gap-0.5 select-none"
+          className="text-xl md:text-2xl font-black tracking-tight text-[var(--text-color)] no-underline flex items-center gap-2 select-none group"
         >
-          Aqib<span className="text-[var(--primary)] font-black">Builds</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] ml-0.5 inline-block" />
+          <div className="relative w-8 h-8 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/aqibbuilds-icon-transparent.png"
+              alt="AqibBuilds Logo"
+              width={32}
+              height={32}
+              className="object-contain w-full h-full"
+              priority
+            />
+          </div>
+          <span>
+            Aqib<span className="text-[var(--primary)] font-black">Builds</span>
+          </span>
         </Link>
 
         {/* Desktop Links & Action CTA */}
