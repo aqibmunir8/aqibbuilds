@@ -25,7 +25,7 @@ export default function Contact() {
             <a
               href="mailto:contactaqib7@gmail.com"
               data-hover="Send Email"
-              className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[var(--text-color)] hover:text-[var(--primary)] transition-colors underline underline-offset-8 decoration-2 break-all"
+              className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[var(--text-color)] hover:text-[var(--primary)] transition-colors break-all"
             >
               contactaqib7@gmail.com
             </a>

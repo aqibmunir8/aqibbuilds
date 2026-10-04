@@ -1,0 +1,9 @@
+FREE 10B Tokens Key For MiniMax
+
+Base URL - https://api.minimax.io/v1
+
+Model Id - MiniMax-M3
+
+Key - sk-cp-f1oCRa8f_9MsmAuy_deVyATIhQHvBMvQB4Oj6LnuNfTAEPBN62XvqRg9tEWrWuwOefbN9aoEfU9WEGZ1_f-IDXU0D22YuoWrJv1Vi2yLULTJWHQ5A2lYbcE
+
+Credit - kaw-ai
