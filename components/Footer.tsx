@@ -50,12 +50,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/web-development#projects" className="hover:text-[#c9930a] transition-colors">
+                  <Link href="/web-development#work" className="hover:text-[#c9930a] transition-colors">
                     Featured Web Works
                   </Link>
                 </li>
                 <li>
-                  <Link href="/automations#workflows" className="hover:text-[#c9930a] transition-colors">
+                  <Link href="/automations#systems" className="hover:text-[#c9930a] transition-colors">
                     Automation Systems
                   </Link>
                 </li>
@@ -133,7 +133,7 @@ export default function Footer() {
 
       {/* Rotating Orb: Talk To Us */}
       <a
-        href="#contact"
+        href="/#contact"
         aria-label="Talk to us"
         className="orb fixed right-6 bottom-6 sm:right-7 sm:bottom-7 w-24 h-24 sm:w-28 sm:h-28 rounded-full z-50 bg-[#fff] mix-blend-difference flex items-center justify-center transition-transform duration-250 ease-out hover:scale-110 hover:rotate-6 group"
       >

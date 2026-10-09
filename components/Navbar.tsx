@@ -33,7 +33,9 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 ${
-          scrolled ? "bg-[#080808]/85 backdrop-blur-md border-b border-[var(--line)] py-4" : ""
+          scrolled
+            ? "bg-[var(--bg)]/85 backdrop-blur-md border-b border-[var(--line)] py-4"
+            : ""
         }`}
       >
         <div className="wrap flex items-center justify-between">
@@ -45,24 +47,21 @@ export default function Navbar() {
             AqibBuilds
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7 text-[13px] tracking-wide text-[var(--muted)]">
+          <nav className="hidden md:flex items-center gap-7 text-[13px] tracking-wide text-[var(--muted)]">
+            <Link href="/" className="hover:text-[var(--ink)] transition-colors">
+              Home
+            </Link>
+            <Link href="/#services" className="hover:text-[var(--ink)] transition-colors">
+              What We Do
+            </Link>
             <Link href="/portfolio" className="hover:text-[var(--ink)] transition-colors">
               Portfolio
             </Link>
-            <Link href="/web-development" className="hover:text-[var(--ink)] transition-colors">
-              Web Dev
-            </Link>
-            <Link href="/automations" className="hover:text-[var(--ink)] transition-colors">
-              Automations
-            </Link>
-            <Link href="/brand-design" className="hover:text-[var(--ink)] transition-colors">
-              Brand Design
-            </Link>
-            <Link href="/ads" className="hover:text-[var(--ink)] transition-colors">
-              Paid Ads
-            </Link>
             <Link href="/#process" className="hover:text-[var(--ink)] transition-colors">
               Process
+            </Link>
+            <Link href="/#contact" className="hover:text-[var(--ink)] transition-colors">
+              Contact
             </Link>
           </nav>
 
@@ -76,7 +75,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 text-[var(--ink)] focus:outline-none lg:hidden"
+              className="p-2 text-[var(--ink)] focus:outline-none md:hidden"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-4 flex flex-col justify-between">
@@ -103,12 +102,26 @@ export default function Navbar() {
 
       {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-[#080808] flex flex-col justify-between p-8 lg:hidden transition-all duration-500 ${
+        className={`fixed inset-0 z-40 bg-[var(--bg)] flex flex-col justify-between p-8 md:hidden transition-all duration-500 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!menuOpen}
       >
-        <div className="pt-20 flex flex-col gap-5">
+        <div className="pt-20 flex flex-col gap-6">
+          <Link
+            href="/"
+            onClick={() => setMenuOpen(false)}
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/#services"
+            onClick={() => setMenuOpen(false)}
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+          >
+            What We Do
+          </Link>
           <Link
             href="/portfolio"
             onClick={() => setMenuOpen(false)}
@@ -117,47 +130,26 @@ export default function Navbar() {
             Portfolio
           </Link>
           <Link
-            href="/web-development"
-            onClick={() => setMenuOpen(false)}
-            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
-          >
-            Web Development
-          </Link>
-          <Link
-            href="/automations"
-            onClick={() => setMenuOpen(false)}
-            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
-          >
-            Automations
-          </Link>
-          <Link
-            href="/brand-design"
-            onClick={() => setMenuOpen(false)}
-            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
-          >
-            Brand Design
-          </Link>
-          <Link
-            href="/ads"
-            onClick={() => setMenuOpen(false)}
-            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
-          >
-            Paid Ads & Growth
-          </Link>
-          <Link
             href="/#process"
             onClick={() => setMenuOpen(false)}
             className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
           >
             Process
           </Link>
+          <Link
+            href="/#contact"
+            onClick={() => setMenuOpen(false)}
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+          >
+            Contact
+          </Link>
         </div>
 
         <div className="pt-8 border-t border-[var(--line)]">
-          <p className="text-xs uppercase tracking-widest text-[var(--muted)] mb-2">Inquiries</p>
+          <p className="text-xs uppercase tracking-widest text-[var(--muted)] mb-1">Inquiries</p>
           <a
             href="mailto:hello@aqibbuilds.com"
-            className="text-lg font-medium text-[var(--gold)] hover:underline"
+            className="text-base font-medium text-[var(--gold)] hover:underline"
           >
             hello@aqibbuilds.com
           </a>
