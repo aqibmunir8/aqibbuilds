@@ -27,7 +27,7 @@ export default function Hero() {
         </div>
 
         {/* Hero Title with letter stagger */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight max-w-5xl my-6 font-normal leading-[1.08]">
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight max-w-6xl my-6 font-normal leading-[1.08]">
           <span className="block">
             {line1.split("").map((char, i) => (
               <span
@@ -39,7 +39,7 @@ export default function Hero() {
               </span>
             ))}
           </span>
-          <span className="serif text-[var(--gold)] block mt-2">
+          <span className="serif text-[var(--gold)] block mt-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight whitespace-nowrap">
             {line2.split("").map((char, i) => (
               <span
                 key={i}

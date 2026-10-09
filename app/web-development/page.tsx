@@ -1,0 +1,124 @@
+import Link from "next/link";
+import SmoothScroll from "@/components/providers/SmoothScroll";
+import Nebula from "@/components/ambient/Nebula";
+import Grain from "@/components/ambient/Grain";
+import CustomCursor from "@/components/CustomCursor";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import CTA from "@/components/CTA";
+import { projectsData } from "@/data/portfolio";
+
+export const metadata = {
+  title: "Web Development — AqibBuilds",
+  description: "High-performance digital flagships built with Next.js and Tailwind.",
+};
+
+export default function WebDevelopmentPage() {
+  const webProjects = projectsData.filter((p) => p.category === "web-development");
+
+  return (
+    <SmoothScroll>
+      <main className="min-h-screen relative bg-[var(--bg)] text-[var(--ink)] selection:bg-[var(--gold)] selection:text-black">
+        <Nebula />
+        <Grain />
+        <CustomCursor />
+        <Navbar />
+
+        {/* Hero */}
+        <section className="pt-36 pb-16 relative">
+          <div className="wrap text-center max-w-2xl mx-auto">
+            <div className="sec-kicker justify-center mb-3">Service</div>
+            <h1 className="text-4xl sm:text-6xl font-normal tracking-tight mb-4">
+              Web <span className="serif text-[var(--gold)]">Development.</span>
+            </h1>
+            <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-8">
+              Fast, bespoke websites engineered with Next.js. Built for conversion, speed, and clean aesthetics.
+            </p>
+            <div className="flex justify-center gap-3">
+              <a href="#work" className="btn text-xs py-2.5 px-6">
+                Featured Work ↓
+              </a>
+              <Link href="#contact" className="btn-ghost text-xs py-2.5 px-6">
+                Start a Project
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Three simple points */}
+        <section className="py-12 border-y border-[var(--line)] bg-[var(--panel)]/30">
+          <div className="wrap grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+            <div>
+              <span className="text-[var(--gold)] text-xs font-mono block mb-1">01 / SPEED</span>
+              <h3 className="text-base font-medium mb-1">Sub-Second Load Times</h3>
+              <p className="text-xs text-[var(--muted)]">Core Web Vitals 95+ out of the box.</p>
+            </div>
+            <div>
+              <span className="text-[var(--gold)] text-xs font-mono block mb-1">02 / CRAFT</span>
+              <h3 className="text-base font-medium mb-1">Bespoke Architecture</h3>
+              <p className="text-xs text-[var(--muted)]">Hand-coded in Next.js & React 19. No bloated templates.</p>
+            </div>
+            <div>
+              <span className="text-[var(--gold)] text-xs font-mono block mb-1">03 / CONVERSION</span>
+              <h3 className="text-base font-medium mb-1">Built to Sell</h3>
+              <p className="text-xs text-[var(--muted)]">Structured storytelling that turns clicks into clients.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="work" className="py-20">
+          <div className="wrap space-y-12">
+            {webProjects.map((p) => (
+              <div
+                key={p.id}
+                className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] overflow-hidden grid grid-cols-1 md:grid-cols-12 group hover:border-[var(--gold)]/40 transition-all"
+              >
+                <div className="md:col-span-5 relative min-h-[260px] bg-[#0c0c0c] overflow-hidden">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center filter brightness-[0.8] group-hover:scale-105 transition-transform duration-500"
+                    style={{ backgroundImage: `url(${p.image})` }}
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/80 text-[11px] font-medium text-[var(--gold)] border border-white/10">
+                    {p.badge}
+                  </div>
+                </div>
+
+                <div className="md:col-span-7 p-7 sm:p-9 flex flex-col justify-between">
+                  <div>
+                    <h2 className="text-2xl font-normal tracking-tight mb-1">{p.title}</h2>
+                    <p className="serif text-sm text-[var(--gold)] mb-3">{p.tagline}</p>
+                    <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed mb-4">
+                      {p.description}
+                    </p>
+                    <div className="text-xs text-[var(--ink)] bg-[var(--gold-soft)] border border-[var(--gold)]/20 p-2.5 rounded-lg mb-4">
+                      <strong className="text-[var(--gold)]">Result: </strong>
+                      {p.clientImpact}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-[var(--line)] flex items-center justify-between">
+                    <span className="text-[11px] text-[var(--muted)]">{p.tags.slice(0, 2).join(" · ")}</span>
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[var(--gold)] hover:underline"
+                      >
+                        Visit Site ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <CTA />
+        <Footer />
+      </main>
+    </SmoothScroll>
+  );
+}

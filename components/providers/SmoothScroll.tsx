@@ -9,8 +9,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     if (reduced) return;
 
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.0,
       smoothWheel: true,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.5,
     });
 
     let rafId: number;

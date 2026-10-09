@@ -53,14 +53,21 @@ export default function Process() {
     if (!containerRef.current) return;
     const cards = Array.from(containerRef.current.querySelectorAll<HTMLElement>(".scard"));
 
+    let ticking = false;
     const handleScroll = () => {
-      cards.forEach((card, i) => {
-        const covered = cards.slice(i + 1).some((nextCard) => {
-          const r = nextCard.getBoundingClientRect();
-          return r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.3;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          cards.forEach((card, i) => {
+            const covered = cards.slice(i + 1).some((nextCard) => {
+              const r = nextCard.getBoundingClientRect();
+              return r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.3;
+            });
+            card.classList.toggle("behind", covered);
+          });
         });
-        card.classList.toggle("behind", covered);
-      });
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

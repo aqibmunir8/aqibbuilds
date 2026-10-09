@@ -68,8 +68,10 @@
     radial-gradient(ellipse 50% 50% at 85% 30%, rgba(120, 80, 220, 0.07), transparent 70%),
     radial-gradient(ellipse 70% 60% at 50% 85%, rgba(255, 196, 48, 0.05), transparent 70%),
     radial-gradient(ellipse 40% 40% at 70% 90%, rgba(60, 140, 200, 0.05), transparent 70%);
-  filter: blur(70px);
+  filter: blur(50px);
   opacity: 0.5;
+  will-change: transform, opacity;
+  transform: translateZ(0);
   animation: nebPulse 22s ease-in-out infinite alternate;
 }
 
@@ -92,8 +94,10 @@
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.05;
+  opacity: 0.04;
   mix-blend-mode: overlay;
+  will-change: transform;
+  transform: translateZ(0);
   animation: grainMove 8s steps(10) infinite;
 }
 

@@ -33,36 +33,42 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 ${
-          scrolled ? "bg-[#080808]/80 backdrop-blur-md border-b border-[var(--line)] py-4" : ""
+          scrolled ? "bg-[#080808]/85 backdrop-blur-md border-b border-[var(--line)] py-4" : ""
         }`}
       >
         <div className="wrap flex items-center justify-between">
           <Link
-            href="#top"
+            href="/"
             className="flex items-center gap-2.5 font-semibold text-base tracking-tight text-[var(--ink)]"
           >
             <span className="w-2 h-2 rounded-full bg-[var(--gold)] shadow-[0_0_8px_var(--gold)]" />
             AqibBuilds
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide text-[var(--muted)]">
-            <Link href="#services" className="hover:text-[var(--ink)] transition-colors">
-              What we do
+          <nav className="hidden lg:flex items-center gap-7 text-[13px] tracking-wide text-[var(--muted)]">
+            <Link href="/portfolio" className="hover:text-[var(--ink)] transition-colors">
+              Portfolio
             </Link>
-            <Link href="#about" className="hover:text-[var(--ink)] transition-colors">
-              About
+            <Link href="/web-development" className="hover:text-[var(--ink)] transition-colors">
+              Web Dev
             </Link>
-            <Link href="#process" className="hover:text-[var(--ink)] transition-colors">
+            <Link href="/automations" className="hover:text-[var(--ink)] transition-colors">
+              Automations
+            </Link>
+            <Link href="/brand-design" className="hover:text-[var(--ink)] transition-colors">
+              Brand Design
+            </Link>
+            <Link href="/ads" className="hover:text-[var(--ink)] transition-colors">
+              Paid Ads
+            </Link>
+            <Link href="/#process" className="hover:text-[var(--ink)] transition-colors">
               Process
-            </Link>
-            <Link href="#contact" className="hover:text-[var(--ink)] transition-colors">
-              Contact
             </Link>
           </nav>
 
           <div className="flex items-center gap-4">
             <Link
-              href="#contact"
+              href="/#contact"
               className="hidden sm:inline-flex text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full border border-[var(--line)] text-[var(--ink)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
             >
               Start a project
@@ -70,7 +76,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 text-[var(--ink)] focus:outline-none md:hidden"
+              className="p-2 text-[var(--ink)] focus:outline-none lg:hidden"
               aria-label="Toggle menu"
             >
               <div className="w-6 h-4 flex flex-col justify-between">
@@ -97,39 +103,53 @@ export default function Navbar() {
 
       {/* Fullscreen Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-[#080808] flex flex-col justify-between p-8 md:hidden transition-all duration-500 ${
+        className={`fixed inset-0 z-40 bg-[#080808] flex flex-col justify-between p-8 lg:hidden transition-all duration-500 ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!menuOpen}
       >
-        <div className="pt-20 flex flex-col gap-6">
+        <div className="pt-20 flex flex-col gap-5">
           <Link
-            href="#services"
+            href="/portfolio"
             onClick={() => setMenuOpen(false)}
-            className="serif text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
           >
-            What we do
+            Portfolio
           </Link>
           <Link
-            href="#about"
+            href="/web-development"
             onClick={() => setMenuOpen(false)}
-            className="serif text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
           >
-            About
+            Web Development
           </Link>
           <Link
-            href="#process"
+            href="/automations"
             onClick={() => setMenuOpen(false)}
-            className="serif text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+          >
+            Automations
+          </Link>
+          <Link
+            href="/brand-design"
+            onClick={() => setMenuOpen(false)}
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+          >
+            Brand Design
+          </Link>
+          <Link
+            href="/ads"
+            onClick={() => setMenuOpen(false)}
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
+          >
+            Paid Ads & Growth
+          </Link>
+          <Link
+            href="/#process"
+            onClick={() => setMenuOpen(false)}
+            className="serif text-3xl sm:text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
           >
             Process
-          </Link>
-          <Link
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="serif text-4xl text-[var(--ink)] hover:text-[var(--gold)] transition-colors"
-          >
-            Contact
           </Link>
         </div>
 

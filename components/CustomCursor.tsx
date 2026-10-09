@@ -25,9 +25,9 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", onMouseMove, { passive: true });
 
     const loop = () => {
-      cx += (mx - cx) * 0.2;
-      cy += (my - cy) * 0.2;
-      cur.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      cx += (mx - cx) * 0.25;
+      cy += (my - cy) * 0.25;
+      cur.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
       animId = requestAnimationFrame(loop);
     };
     animId = requestAnimationFrame(loop);
