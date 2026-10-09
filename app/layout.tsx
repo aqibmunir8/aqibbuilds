@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Instrument_Serif, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  style: ["italic"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "AqibBuilds — We Build. We Automate. We Grow.",
+  title: "AqibBuilds Labs — Bespoke Digital Studio",
   description:
-    "Digital engineering & performance agency. High-converting websites, web apps, headless e-commerce, AI automations, and data-driven ad campaigns.",
+    "A bespoke digital studio designing high-converting websites, web apps, and modern automated systems for ambitious brands.",
 };
 
 export default function RootLayout({
@@ -31,11 +31,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
-      className={`${inter.variable} ${playfair.variable}`}
+      className={`${instrumentSerif.variable} ${instrumentSans.variable}`}
       suppressHydrationWarning
     >
-      <body className="antialiased min-h-screen bg-[var(--bg-color)] text-[var(--text-color)] font-[family-name:var(--font-inter)]">
+      <body className="antialiased min-h-screen bg-[var(--bg)] text-[var(--ink)] font-sans">
         {children}
       </body>
     </html>

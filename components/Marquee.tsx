@@ -1,30 +1,38 @@
-const ticker = [
-  "Website & WebApp Engineering",
-  "Headless E-Commerce",
-  "n8n & AI Automations",
-  "Meta & Google Paid Acquisition",
-  "Brand Identity & Creative Sprints",
-  "Next.js Architecture",
-  "Supabase & PostgreSQL Systems",
-];
-
 export default function Marquee() {
-  const doubled = [...ticker, ...ticker];
+  const logos = [
+    "TechCorp",
+    "Lumina",
+    "Vanguard",
+    "Aura Labs",
+    "Nexus AI",
+    "Prism Studio",
+    "Elevate",
+    "Pulse",
+  ];
 
   return (
-    <div
-      aria-hidden="true"
-      className="bg-[var(--card-bg)] border-y-2 border-[var(--primary)] overflow-hidden py-3 select-none"
-    >
-      <div className="flex gap-10 w-max animate-marquee">
-        {doubled.map((item, i) => (
-          <span
-            key={i}
-            className="text-xs md:text-sm font-black uppercase tracking-widest text-[var(--text-color)] whitespace-nowrap flex items-center gap-4 after:content-['✦'] after:text-[var(--primary)] after:text-xs"
-          >
-            {item}
-          </span>
-        ))}
+    <div className="w-full border-y border-[var(--line)] py-6 overflow-hidden bg-[var(--panel)]/40 relative">
+      <div className="flex w-max animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused]">
+        <div className="flex items-center gap-16 px-8">
+          {logos.map((name, i) => (
+            <div
+              key={i}
+              className="text-sm font-semibold tracking-widest text-[var(--faint)] uppercase whitespace-nowrap hover:text-[var(--gold)] transition-colors cursor-default"
+            >
+              {name}
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-16 px-8" aria-hidden="true">
+          {logos.map((name, i) => (
+            <div
+              key={`dup-${i}`}
+              className="text-sm font-semibold tracking-widest text-[var(--faint)] uppercase whitespace-nowrap hover:text-[var(--gold)] transition-colors cursor-default"
+            >
+              {name}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,61 +1,112 @@
-const steps = [
+"use client";
+
+import { useEffect, useRef } from "react";
+
+interface StepCard {
+  step: string;
+  headline: string;
+  italicWord: string;
+  desc: string;
+  bullets: { title: string; subtitle: string }[];
+}
+
+const stepsData: StepCard[] = [
   {
-    num: "01",
-    title: "Discovery & Technical Audit",
-    desc: "A focused 30-minute deep dive to evaluate your current sales funnel, tech stack bottlenecks, and operational overhead.",
+    step: "Step 1 · Discovery & Strategy",
+    headline: "Together, we dive into",
+    italicWord: "your world.",
+    desc: "We dissect your business goals, target audience, competitive advantages, and bottleneck points to construct an airtight engineering blueprint.",
+    bullets: [
+      { title: "Deep Audit", subtitle: "Full diagnostic of existing assets, UX friction, and traffic flows" },
+      { title: "Strategic Roadmap", subtitle: "Definitive milestones, architectural scope, and KPI targets" },
+      { title: "Brand Alignment", subtitle: "Clarifying voice, tone, and luxury positioning benchmarks" },
+    ],
   },
   {
-    num: "02",
-    title: "Roadmap & Fixed Scope",
-    desc: "We deliver a comprehensive blueprint with transparent fixed pricing, exact sprint milestones, and zero hidden fees.",
+    step: "Step 2 · Design & Engineering",
+    headline: "We craft your tailored",
+    italicWord: "digital engine.",
+    desc: "From bespoke high-fidelity wireframes to pixel-perfect React implementation, we engineer every interaction with surgical precision.",
+    bullets: [
+      { title: "Interactive Prototyping", subtitle: "Figma design systems and micro-interaction exploration" },
+      { title: "Modern Tech Stack", subtitle: "Next.js App Router, Tailwind CSS, high-speed edge deployment" },
+      { title: "Conversion Architecture", subtitle: "Strategically placed conversion hooks and frictionless checkout" },
+    ],
   },
   {
-    num: "03",
-    title: "Rapid Build & Live Staging",
-    desc: "Agile, high-velocity sprints with weekly staging previews so you test features and workflows live before launch.",
-  },
-  {
-    num: "04",
-    title: "Deployment & Growth Scale",
-    desc: "Zero-downtime production launch, automated backups, conversion tracking activation, and ongoing optimization.",
+    step: "Step 3 · Launch & Autonomous Scale",
+    headline: "Launch day is just",
+    italicWord: "Day One.",
+    desc: "We rigorously QA across all devices, optimize Core Web Vitals to 100%, and establish automated monitoring pipelines so you scale hands-free.",
+    bullets: [
+      { title: "Zero-Downtime Deployment", subtitle: "Global CDN delivery with instant edge caching" },
+      { title: "Automated Workflows", subtitle: "Lead enrichment, CRM sync, and transaction webhooks" },
+      { title: "Continuous Support", subtitle: "Direct line of communication and ongoing performance monitoring" },
+    ],
   },
 ];
 
 export default function Process() {
-  return (
-    <section id="process" className="py-24 md:py-32 px-6 md:px-12 border-t border-[var(--card-border)]">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="max-w-[640px] mb-16">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--primary)] mb-3 block">
-            Execution
-          </span>
-          <h2 className="text-[clamp(2.2rem,5vw,4.25rem)] font-extrabold leading-[1.05] tracking-tight text-[var(--text-color)] mb-4">
-            Simple Process.<br />
-            <em className="font-playfair font-bold italic text-[var(--primary)] not-italic">
-              Serious Speed.
-            </em>
-          </h2>
-          <p className="text-base text-[var(--text-secondary)] leading-relaxed">
-            No bloated agency bureaucracy or endless meetings. You work directly with senior software &amp; growth engineers who ship quickly.
-          </p>
-        </div>
+  const containerRef = useRef<HTMLDivElement>(null);
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {steps.map((s) => (
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const cards = Array.from(containerRef.current.querySelectorAll<HTMLElement>(".scard"));
+
+    const handleScroll = () => {
+      cards.forEach((card, i) => {
+        const covered = cards.slice(i + 1).some((nextCard) => {
+          const r = nextCard.getBoundingClientRect();
+          return r.top < window.innerHeight * 0.6 && r.bottom > window.innerHeight * 0.3;
+        });
+        card.classList.toggle("behind", covered);
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <section id="process" className="py-24 relative">
+      <div className="wrap">
+        <div className="sec-kicker">How We Work</div>
+        <h2 className="text-3xl sm:text-5xl font-normal tracking-tight mb-16 max-w-2xl">
+          A proven sequence designed for{" "}
+          <span className="serif text-[var(--gold)]">maximum impact.</span>
+        </h2>
+
+        <div ref={containerRef} className="relative flex flex-col">
+          {stepsData.map((step, idx) => (
             <div
-              key={s.num}
-              className="p-8 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] backdrop-blur-md flex flex-col justify-between hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all duration-300"
+              key={idx}
+              className="scard"
+              style={{ "--i": idx } as React.CSSProperties}
             >
-              <span className="text-3xl font-bold text-[var(--primary)] font-mono mb-8 block opacity-60">
-                {s.num}
-              </span>
-              <div>
-                <h3 className="text-lg font-bold text-[var(--text-color)] mb-2">
-                  {s.title}
-                </h3>
-                <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {s.desc}
-                </p>
+              <div className="text-xs font-mono uppercase tracking-widest text-[var(--gold)] mb-3">
+                {step.step}
+              </div>
+
+              <h3 className="text-2xl sm:text-4xl font-normal tracking-tight mb-4 text-[var(--ink)]">
+                {step.headline} <span className="serif text-[var(--gold)]">{step.italicWord}</span>
+              </h3>
+
+              <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed max-w-3xl mb-8">
+                {step.desc}
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[var(--line)]">
+                {step.bullets.map((b, bIdx) => (
+                  <div key={bIdx} className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-[var(--ink)] flex items-center gap-2">
+                      <span className="text-[var(--gold)]">✦</span> {b.title}
+                    </span>
+                    <span className="text-xs text-[var(--muted)] leading-relaxed">
+                      {b.subtitle}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

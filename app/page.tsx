@@ -1,31 +1,37 @@
+import SmoothScroll from "@/components/providers/SmoothScroll";
+import Nebula from "@/components/ambient/Nebula";
+import Grain from "@/components/ambient/Grain";
+import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import Services from "@/components/Services";
-import Portfolio from "@/components/Portfolio";
+import ParallaxStatement from "@/components/ParallaxStatement";
 import Process from "@/components/Process";
-import WhyUs from "@/components/WhyUs";
-import Testimonials from "@/components/Testimonials";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
+import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
-import Particles from "@/components/Particles";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--bg-color)] text-[var(--text-color)] transition-colors duration-400 relative">
-      <Particles />
-      <CustomCursor />
-      <Navbar />
-      <Hero />
-      <Services />
-      <Portfolio />
-      <Process />
-      <WhyUs />
-      <Testimonials />
-      <About />
-      <Contact />
-      <Footer />
-    </main>
+    <SmoothScroll>
+      <main className="min-h-screen relative selection:bg-[var(--gold)] selection:text-black">
+        {/* Ambient atmospheric layers */}
+        <Nebula />
+        <Grain />
+        <CustomCursor />
+
+        {/* Navigation */}
+        <Navbar />
+
+        {/* Content sections in reference order */}
+        <Hero />
+        <Marquee />
+        <Services />
+        <ParallaxStatement />
+        <Process />
+        <CTA />
+        <Footer />
+      </main>
+    </SmoothScroll>
   );
 }

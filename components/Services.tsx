@@ -1,85 +1,181 @@
-const services = [
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+
+interface ServiceSlide {
+  id: string;
+  num: string;
+  label: string;
+  headline: string;
+  italicWord: string;
+  desc: string;
+  pills: string[];
+  imageUrl: string;
+}
+
+const servicesData: ServiceSlide[] = [
   {
+    id: "web-dev",
     num: "01",
-    title: "Website & WebApp Development",
-    desc: "Blazing fast, conversion-engineered web apps and marketing sites built on Next.js 16, React 19, TypeScript, and Supabase.",
-    tags: ["Next.js", "React", "Node.js", "Tailwind", "Supabase"],
+    label: "Web Development",
+    headline: "Websites that win",
+    italicWord: "customers",
+    desc: "Blazing-fast pages, persuasive copy, and editorial design that turns cold visitors into booked clients.",
+    pills: ["Next.js & React", "Headless CMS", "Performance 100", "Custom UI"],
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    id: "brand-design",
     num: "02",
-    title: "E-Commerce Solutions",
-    desc: "Custom headless Shopify & Next Commerce stores with seamless checkout flows, subscription club mechanics, and instant search.",
-    tags: ["Shopify Headless", "Next.js Commerce", "Stripe", "Klaviyo"],
+    label: "UI/UX & Brand Design",
+    headline: "Design that looks and feels",
+    italicWord: "priceless",
+    desc: "Uncompromising art direction, tailored design systems, and fluid micro-interactions designed to make your brand unforgettable.",
+    pills: ["Design Systems", "Prototyping", "Art Direction", "User Research"],
+    imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    id: "automation",
     num: "03",
-    title: "Workflow & AI Automations",
-    desc: "Eliminating manual bottlenecks with custom n8n pipelines, AI customer agents, instant CRM sync, and SMS/WhatsApp lead workflows.",
-    tags: ["n8n", "Make.com", "AI Agents", "Zapier", "Custom APIs"],
+    label: "Automation",
+    headline: "Scale without scaling",
+    italicWord: "headcount",
+    desc: "Autonomous AI workflows, CRM automations, and bespoke internal tooling that eliminate busywork and accelerate delivery.",
+    pills: ["AI Integrations", "Workflow Pipelines", "Webhook Systems", "Custom API"],
+    imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
   },
   {
+    id: "paid-ads",
     num: "04",
-    title: "Paid Advertising & Growth",
-    desc: "Multi-channel paid acquisition across Meta, Google Search, and TikTok. Engineered for high ROAS, reliable attribution, and scale.",
-    tags: ["Meta Ads", "Google Ads", "Conversion API", "TikTok Ads"],
-  },
-  {
-    num: "05",
-    title: "Brand Strategy & Campaigns",
-    desc: "High-impact visual identity, tone of voice, copy frameworks, and launch creative that elevate your business above competitors.",
-    tags: ["Brand Identity", "Visual Direction", "Copywriting", "Launch Sprints"],
+    label: "Paid Ads & Growth",
+    headline: "Scientific acquisition that actually",
+    italicWord: "compounds",
+    desc: "Data-driven creative testing, conversion rate optimization, and high-yield paid acquisition strategies built for profitable scale.",
+    pills: ["Meta & Google Ads", "CRO Funnels", "Attribution Modeling", "Ad Creatives"],
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
 export default function Services() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isPaused) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+    timerRef.current = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % servicesData.length);
+    }, 5200);
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isPaused]);
+
+  const activeService = servicesData[activeIdx];
+
   return (
-    <section id="services" className="py-24 md:py-32 px-6 md:px-12 border-t border-[var(--card-border)]">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="max-w-[680px] mb-16">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--primary)] mb-3 block">
-            What We Deliver
-          </span>
-          <h2 className="text-[clamp(2.2rem,5vw,4.25rem)] font-extrabold leading-[1.05] tracking-tight text-[var(--text-color)] mb-4">
-            Five Pillars.<br />
-            <em className="font-playfair font-bold italic text-[var(--primary)] not-italic">
-              One Growth Engine.
-            </em>
-          </h2>
-          <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Every service is engineered to compound with the others — driving qualified traffic, closing customers, and automating day-to-day operations.
-          </p>
-        </div>
+    <section id="services" className="py-24 relative">
+      <div className="wrap">
+        <div className="sec-kicker">What We Do</div>
+        <h2 className="text-3xl sm:text-5xl font-normal tracking-tight mb-12">
+          Engineering digital supremacy with <span className="serif text-[var(--gold)]">tailored precision.</span>
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((svc) => (
-            <article
-              key={svc.num}
-              className="p-8 md:p-10 rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] backdrop-blur-md flex flex-col justify-between hover:border-[var(--primary)]/40 hover:-translate-y-1 transition-all duration-300 group relative"
-            >
-              <div>
-                <span className="text-3xl font-bold text-[var(--primary)] opacity-40 group-hover:opacity-100 font-mono mb-4 block transition-opacity">
-                  {svc.num}
-                </span>
-                <h3 className="text-xl md:text-2xl font-bold text-[var(--text-color)] mb-3 group-hover:text-[var(--primary)] transition-colors">
-                  {svc.title}
-                </h3>
-                <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-8">
-                  {svc.desc}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-[var(--card-border)]">
-                {svc.tags.map((t) => (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left: Tab selectors */}
+          <div className="lg:col-span-4 flex flex-col gap-2">
+            {servicesData.map((svc, i) => {
+              const active = i === activeIdx;
+              return (
+                <button
+                  key={svc.id}
+                  onClick={() => setActiveIdx(i)}
+                  className={`svc-item w-full text-left p-5 rounded-xl border transition-all duration-300 flex items-center justify-between group ${
+                    active
+                      ? "bg-[var(--panel)] border-[var(--gold)] text-[var(--ink)] shadow-[0_4px_20px_rgba(255,196,48,0.1)]"
+                      : "bg-transparent border-[var(--line)] text-[var(--muted)] hover:border-[var(--faint)] hover:text-[var(--ink)]"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`text-xs font-mono transition-colors ${
+                        active ? "text-[var(--gold)] font-bold" : "text-[var(--faint)]"
+                      }`}
+                    >
+                      {svc.num}
+                    </span>
+                    <span className="text-base font-medium tracking-wide">{svc.label}</span>
+                  </div>
                   <span
-                    key={t}
-                    className="text-[0.7rem] font-medium uppercase tracking-wider px-2.5 py-1 rounded-md bg-[var(--bg-color)] border border-[var(--card-border)] text-[var(--text-secondary)] group-hover:border-[var(--primary)]/30 group-hover:text-[var(--text-color)] transition-colors"
+                    className={`text-sm transition-transform duration-300 ${
+                      active ? "text-[var(--gold)] translate-x-1" : "text-transparent"
+                    }`}
                   >
-                    {t}
+                    →
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right: Stage Slide */}
+          <div
+            className="lg:col-span-8 rounded-2xl overflow-hidden border border-[var(--line)] bg-[var(--panel)] min-h-[440px] relative flex flex-col justify-end p-8 sm:p-12 transition-all duration-500"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Background image with overlay */}
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-all duration-700 filter brightness-[0.25] scale-105"
+              style={{ backgroundImage: `url(${activeService.imageUrl})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/70 to-transparent" />
+
+            {/* Slide Content */}
+            <div className="relative z-10 max-w-xl">
+              <div className="text-xs uppercase font-mono tracking-widest text-[var(--gold)] mb-3">
+                {activeService.num} / 04 · {activeService.label}
+              </div>
+              <h3 className="text-2xl sm:text-4xl font-normal tracking-tight mb-4 text-[var(--ink)]">
+                {activeService.headline}{" "}
+                <span className="serif text-[var(--gold)]">{activeService.italicWord}</span>
+              </h3>
+              <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-6 font-normal">
+                {activeService.desc}
+              </p>
+
+              {/* Pills */}
+              <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--line)]">
+                {activeService.pills.map((pill, idx) => (
+                  <span
+                    key={idx}
+                    className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[var(--ink)]"
+                  >
+                    {pill}
                   </span>
                 ))}
               </div>
-            </article>
-          ))}
+            </div>
+
+            {/* Stage Progress indicators */}
+            <div className="absolute top-6 right-6 flex items-center gap-2 z-10">
+              {servicesData.map((_, dotIdx) => (
+                <div
+                  key={dotIdx}
+                  onClick={() => setActiveIdx(dotIdx)}
+                  className={`h-1.5 rounded-full cursor-pointer transition-all duration-300 ${
+                    dotIdx === activeIdx
+                      ? "w-8 bg-[var(--gold)]"
+                      : "w-2 bg-[var(--line)] hover:bg-[var(--faint)]"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

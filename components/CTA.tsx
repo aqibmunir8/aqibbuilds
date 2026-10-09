@@ -1,28 +1,31 @@
+import Link from "next/link";
+
 export default function CTA() {
   return (
-    <section id="cta" className="bg-[#EC4899] border-b-2 border-black text-center py-[clamp(5rem,10vw,8rem)] px-[clamp(1.5rem,6vw,4rem)]">
-      <div className="max-w-[700px] mx-auto">
-        <h2 className="text-[clamp(2.25rem,5vw,4rem)] font-black leading-[1.05] tracking-[-0.03em] text-black mb-4">
-          Ready to Scale Your<br />
-          <em className="font-[family-name:var(--font-playfair)] font-bold italic text-white not-italic drop-shadow-[2px_2px_0px_#000]">
-            Business Online?
-          </em>
-        </h2>
-        <p className="text-[1.125rem] text-black/85 max-w-[540px] mx-auto mb-10 leading-[1.7]">
-          Schedule a direct 30-minute discovery call with our lead technical &amp; growth engineers. Let&apos;s map out your exact growth roadmap.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
+    <section id="contact" className="py-24 relative">
+      <div className="wrap">
+        <div className="rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-10 sm:p-16 lg:p-20 relative overflow-hidden text-center flex flex-col items-center">
+          {/* Subtle gold glow behind CTA */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[var(--gold)]/10 rounded-full blur-[100px] pointer-events-none"
+            aria-hidden="true"
+          />
+
+          <div className="sec-kicker justify-center mb-6">Work With Us Today</div>
+
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--ink)] max-w-3xl mb-6">
+            Ready to <span className="serif text-[var(--gold)]">upgrade your digital presence?</span>
+          </h2>
+
+          <p className="max-w-2xl text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-10">
+            Partner with AqibBuilds to build out a sharper, automated, high-converting digital footprint — starting with a complimentary concept review.
+          </p>
+
           <a
             href="mailto:hello@aqibbuilds.com"
-            className="bg-black text-white font-black text-[0.875rem] uppercase tracking-[0.08em] px-8 py-4 border-2 border-black hover:bg-white hover:text-black transition-colors duration-150 no-underline shadow-[4px_4px_0px_rgba(0,0,0,0.2)]"
+            className="btn text-base py-4 px-8 inline-flex items-center gap-3"
           >
-            Book a Discovery Call
-          </a>
-          <a
-            href="#portfolio"
-            className="bg-transparent text-black font-extrabold text-[0.875rem] uppercase tracking-[0.08em] px-8 py-4 border-2 border-black hover:bg-black hover:text-white transition-colors duration-150 no-underline"
-          >
-            Explore Case Studies
+            hello@aqibbuilds.com <span className="text-lg">→</span>
           </a>
         </div>
       </div>
