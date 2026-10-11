@@ -22,7 +22,7 @@ export default function Hero() {
 
       <div className="wrap relative z-10 flex flex-col items-center text-center">
         {/* Kicker */}
-        <div className="sec-kicker">
+        <div className="sec-kicker sec-kicker-dot">
           AQIBBUILDS LABS · DIGITAL STUDIO
         </div>
 

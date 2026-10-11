@@ -12,9 +12,9 @@ export default function Marquee() {
     if (!el) return;
 
     let pos = 0;
-    let currentSpeed = 2.2; // Normal speed (pixels per frame)
-    const normalSpeed = 2.2;
-    const hoverSpeed = 0.55; // Smooth slow crawl on hover
+    let currentSpeed = 0.8; // Normal speed (pixels per frame)
+    const normalSpeed = 0.8;
+    const hoverSpeed = 0.2; // Smooth slow crawl on hover
     let animId: number;
 
     const tick = () => {
@@ -53,9 +53,9 @@ export default function Marquee() {
         isHoveredRef.current = false;
       }}
     >
-      <div className="flex flex-col md:flex-row md:items-center w-full">
+      <div className="wrap flex flex-col md:flex-row md:items-center">
         {/* Left Badge: Anchored on the left */}
-        <div className="flex items-center shrink-0 px-4 sm:px-6 md:pl-8 md:pr-6 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 mb-3 md:mb-0">
+        <div className="flex items-center shrink-0 pr-6 md:pr-8 border-b md:border-b-0 md:border-r border-white/10 pb-3 md:pb-0 mb-3 md:mb-0">
           <span className="w-0.5 h-3.5 bg-[var(--gold)] mr-2.5 rounded-full inline-block" />
           <span className="text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-white/90 whitespace-nowrap select-none uppercase">
             CLIENTS WE&apos;VE WORKED WITH
@@ -63,7 +63,7 @@ export default function Marquee() {
         </div>
 
         {/* Marquee ticker track */}
-        <div className="relative w-full flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+        <div className="relative w-full flex-1 overflow-hidden md:pl-6 [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
           <div ref={trackRef} className="flex w-max items-center will-change-transform">
             {/* Track 1 */}
             <div className="flex items-center gap-8 sm:gap-11 md:gap-14 pr-8 sm:pr-11 md:pr-14 shrink-0">

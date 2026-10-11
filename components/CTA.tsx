@@ -9,7 +9,7 @@ export default function CTA() {
             aria-hidden="true"
           />
 
-          <div className="sec-kicker justify-center mb-4">Work With Us Today</div>
+          <div className="sec-kicker sec-kicker-dot justify-center mb-4">Work With Us Today</div>
 
           <h2 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[var(--ink)] max-w-4xl mx-auto my-5 leading-[1.05]">
             Ready to <span className="serif text-[var(--gold)]">upgrade?</span>

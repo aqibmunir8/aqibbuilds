@@ -131,8 +131,8 @@
 }
 
 .cur.big {
-  width: 52px;
-  height: 52px;
+  width: 68px;
+  height: 68px;
   background: #fff;
 }
 
@@ -141,7 +141,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  color: var(--gold);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   margin-bottom: 14px;
   display: flex;
@@ -152,11 +152,21 @@
 .sec-kicker::before {
   content: "";
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  width: 2px;
+  height: 14px;
+  border-radius: 9999px;
   background: var(--gold);
-  box-shadow: 0 0 10px var(--gold);
+}
+
+.sec-kicker-dot {
+  color: var(--gold);
+}
+
+.sec-kicker-dot::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold);
 }
 
 /* Buttons */
