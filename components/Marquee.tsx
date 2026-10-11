@@ -8,7 +8,7 @@ export default function Marquee() {
     <section
       id="work"
       aria-label="Clients we've worked with"
-      className="w-full border-y border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-md py-4 sm:py-5 overflow-hidden relative z-10"
+      className="group/marquee w-full border-y border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-md py-4 sm:py-5 overflow-hidden relative z-10"
     >
       <div className="flex flex-col md:flex-row md:items-center w-full">
         {/* Left Badge: Anchored on the left */}
