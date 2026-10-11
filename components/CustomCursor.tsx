@@ -33,12 +33,12 @@ export default function CustomCursor() {
     animId = requestAnimationFrame(loop);
 
     const onMouseOver = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest("a, button, .svc-item, .tlogo");
+      const target = (e.target as HTMLElement).closest("a, button, .svc-item, .tlogo, .client-logo-item");
       if (target) cur.classList.add("big");
     };
 
     const onMouseOut = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest("a, button, .svc-item, .tlogo");
+      const target = (e.target as HTMLElement).closest("a, button, .svc-item, .tlogo, .client-logo-item");
       if (target) cur.classList.remove("big");
     };
 

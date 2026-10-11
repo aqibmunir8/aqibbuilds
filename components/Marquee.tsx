@@ -21,7 +21,7 @@ export default function Marquee() {
 
         {/* Marquee ticker track */}
         <div className="relative w-full flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
-          <div className="flex w-max animate-marquee-smooth items-center hover:[animation-play-state:paused]">
+          <div className="flex w-max animate-marquee-smooth items-center">
             {/* Track 1 */}
             <div className="flex items-center gap-14 sm:gap-20 md:gap-24 pr-14 sm:pr-20 md:pr-24 shrink-0">
               {CLIENT_LOGOS.map((client, idx) => {
@@ -29,7 +29,7 @@ export default function Marquee() {
                 return (
                   <div
                     key={`t1-${client.name}-${idx}`}
-                    className="flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
+                    className="client-logo-item flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
                     title={client.name}
                   >
                     <LogoComponent className="h-7 sm:h-8 w-auto max-w-[190px] transition-opacity" />
@@ -45,7 +45,7 @@ export default function Marquee() {
                 return (
                   <div
                     key={`t2-${client.name}-${idx}`}
-                    className="flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
+                    className="client-logo-item flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
                     title={client.name}
                   >
                     <LogoComponent className="h-7 sm:h-8 w-auto max-w-[190px] transition-opacity" />
