@@ -8,7 +8,7 @@ export default function Marquee() {
     <section
       id="work"
       aria-label="Clients we've worked with"
-      className="group/marquee w-full border-y border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-md py-4 sm:py-5 overflow-hidden relative z-10"
+      className="w-full border-y border-[var(--line)] bg-[var(--bg)]/90 backdrop-blur-md py-4 sm:py-5 overflow-hidden relative z-10"
     >
       <div className="flex flex-col md:flex-row md:items-center w-full">
         {/* Left Badge: Anchored on the left */}
@@ -29,7 +29,7 @@ export default function Marquee() {
                 return (
                   <div
                     key={`t1-${client.name}-${idx}`}
-                    className="client-logo-item flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
+                    className="tlogo flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
                     title={client.name}
                   >
                     <LogoComponent className="h-7 sm:h-8 w-auto max-w-[190px] transition-opacity" />
@@ -45,7 +45,7 @@ export default function Marquee() {
                 return (
                   <div
                     key={`t2-${client.name}-${idx}`}
-                    className="client-logo-item flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
+                    className="tlogo flex items-center justify-center text-white/45 hover:text-white transition-all duration-300 transform hover:scale-105 cursor-pointer shrink-0"
                     title={client.name}
                   >
                     <LogoComponent className="h-7 sm:h-8 w-auto max-w-[190px] transition-opacity" />

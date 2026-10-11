@@ -276,7 +276,6 @@
   will-change: transform;
 }
 
-.animate-marquee-smooth:hover,
-.group\/marquee:hover .animate-marquee-smooth {
+.animate-marquee-smooth:hover {
   animation-duration: 90s;
 }
