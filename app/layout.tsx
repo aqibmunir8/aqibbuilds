@@ -21,6 +21,12 @@ export const metadata: Metadata = {
   title: "AqibBuilds Labs — Bespoke Digital Studio",
   description:
     "A bespoke digital studio designing high-converting websites, web apps, and modern automated systems for ambitious brands.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
 
 export default function RootLayout({
