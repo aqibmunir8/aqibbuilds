@@ -1,4 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#EC4899"/>
-  <text x="16" y="22" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="16" fill="#ffffff">AB</text>
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#080808" />
+  <!-- Glowing dot matching the navbar yellow dot (#ffc430) -->
+  <circle cx="9" cy="9" r="2.5" fill="#ffc430" filter="url(#glow)" />
+  <circle cx="9" cy="9" r="2.5" fill="#ffc430" />
+  <!-- AB typography -->
+  <text x="17" y="24" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14" fill="#fffefc" letter-spacing="-0.5">AB</text>
 </svg>
