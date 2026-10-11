@@ -66,7 +66,7 @@ export default function Marquee() {
         <div className="relative w-full flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
           <div ref={trackRef} className="flex w-max items-center will-change-transform">
             {/* Track 1 */}
-            <div className="flex items-center gap-14 sm:gap-20 md:gap-24 pr-14 sm:pr-20 md:pr-24 shrink-0">
+            <div className="flex items-center gap-8 sm:gap-11 md:gap-14 pr-8 sm:pr-11 md:pr-14 shrink-0">
               {CLIENT_LOGOS.map((client, idx) => {
                 const LogoComponent = client.render;
                 return (
@@ -82,7 +82,7 @@ export default function Marquee() {
             </div>
 
             {/* Track 2 (seamless duplication for infinite loop) */}
-            <div className="flex items-center gap-14 sm:gap-20 md:gap-24 pr-14 sm:pr-20 md:pr-24 shrink-0" aria-hidden="true">
+            <div className="flex items-center gap-8 sm:gap-11 md:gap-14 pr-8 sm:pr-11 md:pr-14 shrink-0" aria-hidden="true">
               {CLIENT_LOGOS.map((client, idx) => {
                 const LogoComponent = client.render;
                 return (
