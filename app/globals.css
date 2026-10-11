@@ -275,7 +275,3 @@
   animation: marqueeRoll 32s linear infinite;
   will-change: transform;
 }
-
-.animate-marquee-smooth:hover {
-  animation-duration: 90s;
-}
