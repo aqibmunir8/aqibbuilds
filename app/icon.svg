@@ -1,14 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <defs>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    <!-- Glow filter replicating the shadow-[0_0_8px_var(--gold)] glow on #ffc430 -->
+    <filter id="gold-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
     </filter>
   </defs>
+  <!-- Dark black background matching site background -->
   <rect width="32" height="32" rx="7" fill="#080808" />
-  <!-- Glowing dot matching the navbar yellow dot (#ffc430) -->
-  <circle cx="9" cy="9" r="2.5" fill="#ffc430" filter="url(#glow)" />
-  <circle cx="9" cy="9" r="2.5" fill="#ffc430" />
-  <!-- AB typography -->
-  <text x="17" y="24" text-anchor="middle" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14" fill="#fffefc" letter-spacing="-0.5">AB</text>
+  <!-- Centered "AB" text styled with navbar yellow color and glow -->
+  <text
+    x="16"
+    y="22"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+    font-weight="800"
+    font-size="15"
+    fill="#ffc430"
+    filter="url(#gold-glow)"
+    letter-spacing="-0.5"
+  >AB</text>
 </svg>
