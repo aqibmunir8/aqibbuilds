@@ -12,9 +12,9 @@ export default function Marquee() {
     if (!el) return;
 
     let pos = 0;
-    let currentSpeed = 1.35; // Normal speed (pixels per frame)
-    const normalSpeed = 1.35;
-    const hoverSpeed = 0.35; // Smooth slow crawl on hover
+    let currentSpeed = 2.2; // Normal speed (pixels per frame)
+    const normalSpeed = 2.2;
+    const hoverSpeed = 0.55; // Smooth slow crawl on hover
     let animId: number;
 
     const tick = () => {
